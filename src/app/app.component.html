@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <span>VorteksED Lunch</span>
+  <span class="example-spacer"></span>
+
+  <button mat-flat-button class="mr"
+    [routerLink]="['/']" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" >Today</button>
+  <button mat-flat-button class="mr"
+    [routerLink]="['/employees']" routerLinkActive="active">Employees</button>
+  <button mat-flat-button
+    [routerLink]="['/history']" routerLinkActive="active">History</button>
+
+  <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button> -->
+</mat-toolbar>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

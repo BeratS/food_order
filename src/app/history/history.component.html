@@ -1,0 +1,10 @@
+<div class="history">
+  <div class="list mat-elevation-z1" matRipple
+    *ngFor="let item of data">
+    {{item.dt | date: 'EEEE, MMMM d'}}
+    
+    <div class="employees">
+      <b *ngFor="let name of item?.names; let l = last">{{name}}{{l ? '' : ', '}}</b>
+    </div>
+  </div>
+</div>

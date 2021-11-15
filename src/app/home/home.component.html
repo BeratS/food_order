@@ -1,0 +1,79 @@
+<div class="home">
+  <div class="main">
+    <mat-form-field appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Berat" #input>
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"
+      matSort matSortActive="select" matSortDirection="desc">
+
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>Avialable for lunch</th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? onSelectEmployee(row) : null"
+                        [checked]="selection.isSelected(row)"
+                        [aria-label]="checkboxLabel(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Name </th>
+        <td mat-cell *matCellDef="let elm"> {{elm.name}} </td>
+      </ng-container>
+    
+      <!-- Vacation -->
+      <ng-container matColumnDef="present">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> Present </th>
+        <td mat-cell *matCellDef="let elm"
+        (click)="$event.stopPropagation()">
+          <button mat-stroked-button color="warn" *ngIf="!elm?.isDayOff;else dayOffTmpl"
+            (click)="onSetEmployeeDayOff(elm?.name)">Set day off</button>
+
+          <ng-template #dayOffTmpl>
+            <button mat-icon-button color="danger" class="bmx">
+              <mat-icon class="md-32">face_retouching_off</mat-icon>
+            </button>
+            <button mat-stroked-button (click)="backFromDayOff(elm?.name)">Back to work</button>
+          </ng-template>
+        </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+          (click)="onSelectEmployee(row)">
+      </tr>
+    </table>
+  </div>
+  <ul class="details">
+    <li>Total: {{ selection?.selected?.length }}</li>
+
+    <ul class="list-users" [hidden]="empLunchList?.length == 0">
+      <li class="header">Employees that don't want lunch today:</li>
+      <li *ngFor="let item of empLunchList; let i = index">{{i+1}}. {{ item }}</li>
+    </ul>
+
+    <ul class="list-users" [hidden]="emplDayOff?.length == 0">
+      <li class="header">Employees that are on vacation:</li>
+      <li *ngFor="let item of emplDayOff; let i = index">{{i+1}}. {{ item }}</li>
+    </ul>
+
+    <mat-form-field appearance="fill" [hidden]="true">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+        <input matStartDate formControlName="start" placeholder="Start date">
+        <input matEndDate formControlName="end" placeholder="End date">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker touchUi #picker></mat-date-range-picker>
+    
+      <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+      <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+    </mat-form-field>
+
+  </ul>
+</div>

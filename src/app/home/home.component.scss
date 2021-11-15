@@ -1,0 +1,87 @@
+.main,
+table {
+    width: 100%;
+}
+
+.home {
+    padding-bottom: 24px;
+}
+
+:host ::ng-deep {
+    & .mat-checkbox-inner-container {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.mat-column-present {
+    width: 32%;
+}
+
+.home {
+    display: flex;
+}
+
+.mat-column-select {
+    text-align: center;
+}
+
+:host ::ng-deep .mat-column-select .mat-sort-header-container {
+    justify-content: center;
+}
+
+.mat-column-action {
+    text-align: right;
+    &.mat-header-cell {
+      padding-right: 12em;  
+    }
+}
+
+ul {
+    list-style: none;
+}
+
+.details {
+    width: 400px;
+    margin: 6em auto 3em;
+
+    & > li {
+        font-size: 28px;
+    }
+}
+
+.list-users {
+    margin: 1rem 0;
+    padding: 0;
+
+    & .header {
+        font-size: 16px;
+        font-weight: 500;
+        color: #3f51b5;
+        margin-bottom: 6px;
+    }
+
+    &>li:not(.header) {
+        padding-left: 1em;
+        font-size: 16px;
+        line-height: 20px;
+    }
+}
+
+.bmx {
+    margin: 0 12px 0 4px;
+
+    & .mat-icon {
+        color: #646464;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .home {
+        flex-direction: column-reverse;
+    }
+
+    .details {
+        width: 100%;
+    }
+}

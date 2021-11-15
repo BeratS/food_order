@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Add new employee</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Name and Lastname</mat-label>
+    <input matInput [formControl]="name" (keydown.enter)="onSave()">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button color="primary" (click)="onSave()">Save</button>
+</div>

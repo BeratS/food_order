@@ -1,0 +1,24 @@
+<div class="mat-dialog-header">
+  <h1 mat-dialog-title>{{data?.title}}</h1>
+  <mat-icon (mousedown)="onNoClick()" *ngIf="!data?.closeIcon">close</mat-icon>
+</div>
+<div mat-dialog-content>
+  <p class="message">{{data?.msg}}</p>
+  <p [innerHTML]="data?.descHtml"></p>
+  <p [hidden]="!data?.msg2">{{data?.msg2}}</p>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button id="btn" *ngIf="!data?.hideBtn"
+    class="bg-primary"
+    [ngClass]="[getBtnWord(true) || '']"
+    (mousedown)="onSave()" >
+      {{ getBtnWord(false) }}
+  </button>
+  <button mat-raised-button *ngIf="!data?.hideBtn2"
+    class="mat-elevation-z1"
+    [ngClass]="[getBtn2Word(true) || '']"
+    (mousedown)="onNoClick()">
+    {{ getBtn2Word(false) }}
+  </button>
+</div>

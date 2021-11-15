@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: #f8f8f8;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.alert-success {
+  background-color: #008000c2;
+  color: #fff;
+}
+
+.alert-danger {
+  background-color: #ff0000e0;
+  color: #fff;
+}
+
+.md-32 {
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 32px;
+}
