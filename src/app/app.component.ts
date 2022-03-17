@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LocalDbService } from './services/localDb.service';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,12 @@ export class AppComponent {
 
   title = 'ved-lunch';
 
-  constructor() {}
+  constructor(
+    private db: LocalDbService
+  ) {}
+
+  get time() {
+    return this.db.dateTime;
+  }
 
 }

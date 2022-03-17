@@ -2,6 +2,8 @@
   <span>VorteksED Lunch</span>
   <span class="example-spacer"></span>
 
+  <button mat-button class="mr">{{ time | date: 'dd-MM-yyyy hh:mm a' }}</button>
+
   <button mat-flat-button class="mr"
     [routerLink]="['/']" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" >Today</button>
   <button mat-flat-button class="mr"

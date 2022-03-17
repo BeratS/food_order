@@ -3,8 +3,14 @@ table {
     width: 100%;
 }
 
-.home {
+.home-body {
     padding-bottom: 24px;
+}
+
+h2 {
+    margin: 10px 0 0;
+    text-align: center;
+    font-weight: bold;
 }
 
 :host ::ng-deep {
@@ -18,7 +24,7 @@ table {
     width: 32%;
 }
 
-.home {
+.home-body {
     display: flex;
 }
 

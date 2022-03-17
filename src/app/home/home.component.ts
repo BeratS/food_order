@@ -40,6 +40,10 @@ export class HomeComponent implements OnInit {
     private db: LocalDbService
   ) { }
 
+  isInDayOff(name: string): boolean {
+    return this.db.isInPeriod ? true : includes(this.emplDayOff, name);
+  }
+
   ngOnInit() {
     this.fillTable();
     this.customSort();

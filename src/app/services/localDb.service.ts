@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { compact, findIndex, indexOf, map, trim } from 'lodash';
+import { timer } from 'rxjs';
 import { AlertService } from './alert/alert.service';
 
 const dbKey = {
@@ -13,9 +14,22 @@ const dbKey = {
 })
 export class LocalDbService {
 
+  dateTime!: Date;
+  isInPeriod = false;
+
   constructor(
     private alert: AlertService
-  ) { }
+  ) {
+    this.getDateTime();
+  }
+
+  getDateTime() {
+    timer(0, 60000).subscribe({next: () => {
+      this.dateTime = new Date();
+      const h = this.dateTime.getHours();
+      this.isInPeriod = h > 10 || h < 14;
+    }});
+  }
 
   // Registering employees ---------------------------------------------------
 
